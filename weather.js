@@ -13,6 +13,18 @@ function print(data) {
   console.log("風速: "+data.wind.speed);
   console.log("風向: "+data.wind.deg);
 }
+let b = document.querySelector('#btn');
+b.addEventListener('click', showSelectResult);
+
+function showSelectResult() {
+    let s = document.querySelector('#city');
+    let idx = s.selectedIndex;
+
+    let os = s.querySelectorAll('option');
+    let o = os.item(idx);
+
+    console.log(o.getAttribute('value'));
+}
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
