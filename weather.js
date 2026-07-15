@@ -13,7 +13,7 @@ function print(data) {
   console.log("風速: "+data.wind.speed);
   console.log("風向: "+data.wind.deg);
 }
-let b = document.querySelector('#btn');
+let b = document.querySelector('button#btn');
 b.addEventListener('click', showSelectResult);
 
 function showSelectResult() {
@@ -28,6 +28,56 @@ function showSelectResult() {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let old = document.querySelector('#result');
+
+  if(old){
+    old.remove();
+  }
+  //div#resultを作成
+  let result=document.createElement('div');
+  result.id="result";
+
+  let body=document.querySelector('body');
+  body.insertAdjacentElement('beforeend',result);
+
+  let h2=document.createElement('h2');
+  h2.textContent="世界の天気(検索結果1件)";
+  result.insertAdjacentElement('beforeend',h2);
+
+  let city=document.createElement('h2');
+  city.textContent="都市名: "+data.name;
+  result.insertAdjacentElement('beforeend',city);
+
+  let table=document.createElement('table');
+  result.insertAdjacentElement('beforeend',table);
+
+  let tbody=document.createElement('tbody');
+  table.insertAdjacentElement('beforeend',tbody);
+
+  //行を追加する関数
+  function addRow(title,value){
+
+    let tr=document.createElement('tr');
+    tbody.insertAdjacentElement('beforeend',tr);
+
+    let th=document.createElement('th');
+    th.textContent=title;
+    tr.insertAdjacentElement('beforeend',th);
+
+    let td = document.createElement('td');
+    td.textContent=value;
+    tr.insertAdjacentElement('beforeend',td);
+  }
+
+
+  addRow("経度",data.coord.lon);
+  addRow("緯度",data.coord.lat);
+  addRow("天気",data.weather[0].description);
+  addRow("最低気温",data.main.temp_min);
+  addRow("最高気温",data.main.temp_max);
+  addRow("湿度",data.main.humidity);
+  addRow("風速",data.wind.speed);
+  addRow("風向",data.wind.deg);
 
 }
 
