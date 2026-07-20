@@ -11,11 +11,12 @@ h2{
 }
 table {
     table-layout: fixed;
-    width: 90%;
-    margin: 10px auto;
+    width: 100%;
+    margin: 70px auto;
     border-collapse: collapse;
     border-top: 1px solid #999999;
     border-bottom: 1px solid #999999;
+    font-size: 30px;
   }
   
   th,
@@ -51,11 +52,19 @@ table {
   tbody tr:nth-child(odd) {
     background-color: #eeeeee;
   }
+  tbody tr:nth-child(even){
+    background-color: white;
+}
   
   caption {
     padding: 1em;
+
     font-style: italic;
     caption-side: bottom;
     letter-spacing: 1px;
   }
-  
+  body {
+    background-image: url("aozora.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
